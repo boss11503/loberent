@@ -51,8 +51,8 @@ class Wall(sprite.Sprite):
     def draw_wall(self):
         window.blit(self.image, (self.rect.x, self.rect.y))
             
-win_width = 700
-win_height = 500
+win_width = 1000
+win_height = 700
 
 window = display.set_mode((win_width, win_height))
 display.set_caption('игра')
@@ -61,11 +61,19 @@ player = Player('hero.png', 5, win_height - 80, 4)
 monster = Enemy('cyborg.png', win_width - 80, 280, 2)
 final = GameSprite('treasure.png', win_width - 120, win_height - 80, 0)
 
-w1 = Wall(154, 205, 50, 100, 20, 450, 10)
-w2 = Wall(154, 205, 50, 100, 480, 350, 10)
-w3 = Wall(154, 205, 50, 100, 20, 10, 380)
-w4 = Wall(154, 207, 50, 550, 20, 10, 300)
-w5 = Wall(154, 203, 50, 200, 20, 10, 380)
+w1 = Wall(154, 205, 50, 100, 20, 800, 15)
+w2 = Wall(154, 205, 50, 100, 600, 750, 20)
+w3 = Wall(154, 205, 50, 150, 500, 250, 15)
+w4 = Wall(154, 205, 50, 150, 20, 10, 500)
+w5 = Wall(154, 207, 50, 550, 20, 10, 300)
+w6 = Wall(154, 203, 50, 400, 20, 10, 380)
+
+
+
+
+
+
+
 
 game = True
 finish = False
@@ -103,7 +111,7 @@ while  game:
         w3.draw_wall()
         w4.draw_wall()
         w5.draw_wall()
-
+        w6.draw_wall()
 
 
 
