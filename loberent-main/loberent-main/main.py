@@ -27,7 +27,7 @@ class Player(GameSpite):
 class Enemy(GameSpite):
     direction = "left"
     def update(self):
-        if self.rect.x <= 10:
+        if self.rect.x <= 470:
             self.direction = "right"
         if self.rect.x >= win_width - 85:
             self.direction = "left"
@@ -59,10 +59,10 @@ window = display.set_mode((win_width, win_height))
 display.set_caption("Лабиринт")
 background = transform.scale(image.load("background.jpg"), (win_width, win_height))
 
-player = Player('hero.png', 5, win_height - 80, 10)
-monster1 = Enemy('cyborg.png', win_width - 20, 100, 30)
-monster2 = Enemy('cyborg.png', win_width - 15, 300, 20)
-monster3 = Enemy('cyborg.png', win_width - 60, 600, 10)
+player = Player('hero.png', 5, win_height - 80, 4)
+monster1 = Enemy('cyborg.png', win_width - 20, 280, 5)
+monster2 = Enemy('cyborg.png', win_width - 150, 300, 5)
+monster3 = Enemy('cyborg.png', win_width - 600, 320, 5)
 final = GameSpite('treasure.png', win_width - 100, 50, 0)
 
 w1 = Wall(154, 205, 50, 100, 20, 675, 20)
@@ -75,9 +75,7 @@ w7 = Wall(154, 205, 50, 630, 20, 20, 100)
 w8 = Wall(154, 205, 50, 200, 650, 150, 20)
 w9 = Wall(154, 205, 50, 450, 650, 200, 20)
 w10 = Wall(154, 205, 50, 450, 155, 20, 520)
-w11 = Wall(154, 205, 50, 600, 500, 300, 20)
-w12 = Wall(154, 205, 50, 300, 300, 300, 20)
-w13 = Wall(154, 205, 50, 100, 300, 100, 20)
+
 
 game = True
 finish = False
@@ -86,8 +84,8 @@ FPS = 60
 
 font.init()
 font = font.Font(None, 150)
-win = font.render('ты побид!', True, (255, 215, 0))
-lose = font.render('ты проиг:(', True, (180, 0, 0))
+win = font.render('ты победил!', True, (255, 215, 0))
+lose = font.render('ты проиграл:(', True, (180, 0, 0))
 
 mixer.init()
 mixer.music.load('jungles.ogg')
@@ -124,11 +122,8 @@ while game:
         w8.draw_wall()
         w9.draw_wall()
         w10.draw_wall()
-        w11.draw_wall()
-        w12.draw_wall()
-        w13.draw_wall()
 
-        if sprite.collide_rect(player, monster1) or sprite.collide_rect(player, monster2) or sprite.collide_rect(player, monster3) or sprite.collide_rect(player, w1) or sprite.collide_rect(player, w2) or sprite.collide_rect(player, w3) or sprite.collide_rect(player, w4) or sprite.collide_rect(player, w5) or sprite.collide_rect(player, w6) or sprite.collide_rect(player, w7) or sprite.collide_rect(player, w8) or sprite.collide_rect(player, w9) or sprite.collide_rect(player, w10) or sprite.collide_rect(player, w11) or sprite.collide_rect(player, w12) or sprite.collide_rect(player, w13):
+        if sprite.collide_rect(player, monster1) or sprite.collide_rect(player, monster2) or sprite.collide_rect(player, monster3) or sprite.collide_rect(player, w1) or sprite.collide_rect(player, w2) or sprite.collide_rect(player, w3) or sprite.collide_rect(player, w4) or sprite.collide_rect(player, w5) or sprite.collide_rect(player, w6) or sprite.collide_rect(player, w7) or sprite.collide_rect(player, w8) or sprite.collide_rect(player, w9):
             finish = True
             window.blit(lose, (100, 350))
             kick.play()
